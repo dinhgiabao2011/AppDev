@@ -21,14 +21,19 @@ namespace AppDev.Data.Repository
 			return _context.Categories.ToList();
 		}
 
-		public void Create(Category entity)
+		public new void Create(Category entity)
 		{
 			_context.Categories.Add(entity);
 		}
 
-		public List<Category> GetAll()
+		public Category Get(int? Id)
 		{
-			throw new NotImplementedException();
+				return _context.Set<Category>().Find(Id);
+		}
+
+		public new List<Category> GetAll()
+		{
+			return _context.Set<Category>().ToList();
 		}
 	}
 }

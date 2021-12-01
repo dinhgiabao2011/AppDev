@@ -1,6 +1,5 @@
 ﻿using AppDev.Data;
 using AppDev.Data.IRepository;
-using AppDev.Data.Repository;
 using AppDev.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -31,7 +30,7 @@ namespace AppDev.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Create(Category model)
+		public IActionResult Create(Category model)
 		{
 			if (ModelState.IsValid)
 			{
@@ -47,7 +46,7 @@ namespace AppDev.Controllers
 
 		public IActionResult Update(int? Id)
 		{
-			var obj = _context.Categories.Find(Id);
+			var obj = _unitOfWork.Categories.Get(Id);
 			if (Id == null)
 			{
 				return NotFound();

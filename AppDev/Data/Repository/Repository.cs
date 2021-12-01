@@ -24,5 +24,10 @@ namespace AppDev.Data.Repository
 		{
 			return _context.Set<T>().ToList();
 		}
+
+		public void Remove(T entity)
+		{
+			_context.Set<T>().Remove(entity);
+		}
 	}
 }

@@ -10,5 +10,7 @@ namespace AppDev.Data.IRepository
 		List<T> GetAll();
 
 		void Create(T entity);
+
+		void Remove(T entity);
 	}
 }
