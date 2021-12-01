@@ -22,6 +22,11 @@ namespace AppDev.Data
 			builder.Seed();
 		}
 
+		internal object Find(int id)
+		{
+			throw new NotImplementedException();
+		}
+
 		public DbSet<Category> Categories { get; set; }
 		public DbSet<Course> Courses { get; set; }
 		public DbSet<Trainer> Trainers { get; set; }
@@ -29,6 +34,7 @@ namespace AppDev.Data
 		public DbSet<AssignTrainerToCourse> AssignTrainers { get; set; }
 		public DbSet<AssignTraineeToCourse> AssignTrainees { get; set; }
 		public DbSet<AppDev.ViewModel.TrainerViewModel> TrainerViewModel { get; set; }
+		public DbSet<AppDev.ViewModel.TraineeViewModel> TraineeViewModel { get; set; }
 
 	}
 }

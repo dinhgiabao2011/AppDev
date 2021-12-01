@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AppDev.ViewModel.TrainerViewModel>
+﻿@model IEnumerable<AppDev.ViewModel.TraineeViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.Age)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                @Html.DisplayNameFor(model => model.School)
             </th>
             <th></th>
         </tr>
@@ -40,10 +40,10 @@
                 @Html.DisplayFor(modelItem => item.Age)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Address)
+                @Html.DisplayFor(modelItem => item.School)
             </td>
             <td>
-                <a asp-action="Update" asp-route-id="@item.Id">Update</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>

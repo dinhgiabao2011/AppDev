@@ -14,5 +14,7 @@ namespace AppDev.Models
 		public int Age { get; set; }
 
 		public Trainer Trainer { get; set; }
+
+		public Trainee Trainee { get; set; }
 	}
 }

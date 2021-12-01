@@ -194,6 +194,9 @@ namespace AppDev.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("School")
                         .HasColumnType("nvarchar(max)");
 
@@ -216,6 +219,31 @@ namespace AppDev.Migrations
                     b.HasKey("ApplicationUserId");
 
                     b.ToTable("Trainers");
+                });
+
+            modelBuilder.Entity("AppDev.ViewModel.TraineeViewModel", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("School")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TraineeViewModel");
                 });
 
             modelBuilder.Entity("AppDev.ViewModel.TrainerViewModel", b =>
@@ -422,8 +450,8 @@ namespace AppDev.Migrations
             modelBuilder.Entity("AppDev.Models.Trainee", b =>
                 {
                     b.HasOne("AppDev.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId")
+                        .WithOne("Trainee")
+                        .HasForeignKey("AppDev.Models.Trainee", "ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -494,6 +522,8 @@ namespace AppDev.Migrations
 
             modelBuilder.Entity("AppDev.Models.ApplicationUser", b =>
                 {
+                    b.Navigation("Trainee");
+
                     b.Navigation("Trainer");
                 });
 #pragma warning restore 612, 618

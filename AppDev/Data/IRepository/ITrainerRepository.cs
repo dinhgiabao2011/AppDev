@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace AppDev.Data.IRepository
 {
-	public interface ICategoryRepository : IRepository<Category>
+	public interface ITrainerRepository : IRepository<Trainer>
 	{
-		List<Category> CategoryGetAll();
 
-		Category Get(int? Id);
 	}
 }

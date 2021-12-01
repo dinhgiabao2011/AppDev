@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AppDev.Migrations
 {
-    public partial class addFullName : Migration
+    public partial class AddDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,6 +60,22 @@ namespace AppDev.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TraineeViewModel",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Age = table.Column<int>(type: "int", nullable: false),
+                    School = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TraineeViewModel", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -189,7 +205,8 @@ namespace AppDev.Migrations
                 columns: table => new
                 {
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    School = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    School = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -388,6 +405,9 @@ namespace AppDev.Migrations
 
             migrationBuilder.DropTable(
                 name: "AssignTrainers");
+
+            migrationBuilder.DropTable(
+                name: "TraineeViewModel");
 
             migrationBuilder.DropTable(
                 name: "TrainerViewModel");

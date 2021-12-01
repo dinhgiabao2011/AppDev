@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace AppDev.Controllers
 {
@@ -60,6 +61,7 @@ namespace AppDev.Controllers
 				_roleManager.CreateAsync(trainerRole);
 			}
 
+			
 			var createRusult = _userManager.CreateAsync(user, model.Password).GetAwaiter().GetResult();
 			if (createRusult == IdentityResult.Success)
 			{
@@ -76,6 +78,28 @@ namespace AppDev.Controllers
 			_context.SaveChanges();
 
 			return RedirectToAction("Index");
+		}
+
+		public IActionResult Delete(Trainer trainer)
+		{
+			if (trainer == null)
+			{
+				return NotFound();
+			}
+			else
+			{
+				var obj = _context.Trainers.FirstOrDefault(x => x.ApplicationUserId.Equals(trainer));
+				return View(obj);
+			}
+		}
+
+		[HttpPost, ActionName("Delete")]
+		public async Task<IActionResult> Confirm(Trainer trainer)
+		{
+			var obj = _context.Trainers.Find(trainer);
+			_context.Trainers.Remove(obj);
+			await _context.SaveChangesAsync();
+			return RedirectToAction(nameof(Index));
 		}
 	}
 }

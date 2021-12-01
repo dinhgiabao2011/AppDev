@@ -1,4 +1,4 @@
-﻿@model AppDev.Models.AssignTrainerToCourse
+﻿@model AppDev.Models.AssignTraineeToCourse
 
 @{
     ViewData["Title"] = "Create";
@@ -6,16 +6,16 @@
 
 <h1>Create</h1>
 
-<h4>AssignTrainerToCourse</h4>
+<h4>AssignTraineeToCourse</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 						<div class="form-group">
-							<label asp-for="TrainerId" class="control-label"></label>
-							@Html.DropDownListFor(x => x.TrainerId, Model.TrainerList, "Please Choose Trainer", new { @class = "form-control" })
-              <span asp-validation-for="TrainerId" class="text-danger"></span>
+							<label asp-for="TraineeId" class="control-label"></label>
+							@Html.DropDownListFor(x => x.TraineeId, Model.TraineeList, "Please Choose Trainee", new { @class = "form-control" })
+							<span asp-validation-for="TraineeId" class="text-danger"></span>
 						</div>
 						<div class="form-group">
 							<label asp-for="CourseId" class="control-label"></label>
